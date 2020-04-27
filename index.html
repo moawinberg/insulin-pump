@@ -95,6 +95,9 @@
       <div>
         <h2>Blood Glucose</h2>
         <input maxlength="3" ng-change="changeBgLevel()" ng-model="bgLevel" value="" />
+        <br />
+        <h5>Latest: {{ object.bgLevel }} </h5>
+        <span>{{ object.timestamp }} </span>
       </div>
 
     </div>
@@ -110,6 +113,7 @@
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/moment.min.js"></script>
   <script src="js/app.js"></script>
 </body>
 

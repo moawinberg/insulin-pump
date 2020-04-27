@@ -5,7 +5,7 @@ angular.module('MainApp', [
 angular.module('MainApp.controllers', []).
   controller('mainController', function ($scope) {
     $scope.currentPage = 'home';
-    $scope.object = { bgLevel: 120 };
+    $scope.object = { bgLevel: 120, timestamp: moment().calendar() };
     $scope.bgLevel = "";
 
     function graph() {
@@ -37,6 +37,7 @@ angular.module('MainApp.controllers', []).
 
     $scope.changeBgLevel = function() {
       $scope.object.bgLevel = $scope.bgLevel;
+      $scope.object.timestamp = moment().calendar();
     };
 
     $scope.goTo = function(page) {
