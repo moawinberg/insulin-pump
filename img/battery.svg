@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="256px" viewBox="0 0 512 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>battery</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="battery">
+            <path d="M496,80 L480,80 L480,64 C480,55.163 472.837,48 464,48 L448,48 L448,32 C448,14.327 433.673,0 416,0 L32,0 C14.327,0 0,14.327 0,32 L0,224 C0,241.673 14.327,256 32,256 L416,256 C433.673,256 448,241.673 448,224 L448,208 L464,208 C472.837,208 480,200.837 480,192 L480,176 L496,176 C504.837,176 512,168.837 512,160 L512,96 C512,87.163 504.837,80 496,80 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <rect id="Rectangle" fill="#4CD964" x="29" y="33" width="273" height="190"></rect>
+        </g>
+    </g>
+</svg>

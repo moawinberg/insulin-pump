@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="327px" height="392px" viewBox="0 0 327 392" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>calendar</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="calendar">
+            <path d="M81.75,0 C89.2718584,0 95.3741682,7.31829853 95.3741682,16.3323362 L95.3741682,16.3323362 L95.3741682,49 L231.625832,49 L231.625832,16.3323362 C231.625832,7.31829853 237.728142,0 245.25,0 L245.25,0 L258.874168,0 C266.396027,0 272.500832,7.31829853 272.500832,16.3323362 L272.500832,16.3323362 L272.500832,49 L286.125,49 C308.660637,49 327,70.9848024 327,98 L327,98 L327,343 C327,370.015198 308.660637,392 286.125,392 L286.125,392 L40.875,392 C18.3393633,392 0,370.015198 0,343 L0,343 L0,98 C0,70.9848024 18.3393633,49 40.875,49 L40.875,49 L54.4991682,49 L54.4991682,16.3323362 C54.4991682,7.31829853 60.6039734,0 68.1258318,0 L68.1258318,0 Z" id="Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <rect id="Rectangle" fill="#4CD964" x="37" y="111" width="255" height="249" rx="2"></rect>
+            <text id="7" font-family="Helvetica-Bold, Helvetica" font-size="200" font-weight="bold" letter-spacing="-4.8" fill="#FFFFFF">
+                <tspan x="110.784766" y="294">7</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
