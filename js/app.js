@@ -12,19 +12,53 @@ angular.module('MainApp.controllers', []).
       if (!document.getElementById('chart')) {
         return;
       }
-     const ctx = document.getElementById('chart').getContext('2d');
+      const ctx = document.getElementById('chart').getContext('2d');
       $scope.chart = new Chart(ctx, {
-       type: 'line',
+        type: 'line',
         data: {
           labels: ['4:00', '6:00', '8:00', '10:00', '12:00', '14:00', '16:00', '18:00'],
-          datasets: [{
-            backgroundColor: '#FB8C00',
-            fill: false,
-            borderColor: '#FB8C00',
-            data: [0, 10, 5, 10, 10, 20, 15]
-          }]
+          datasets: [
+            {
+              backgroundColor: '#FF9500',
+              fill: false,
+              borderColor: '#FF9500',
+              data: [70, 100, 150, 100, 100, 120, 210]
+            },
+            {
+              pointRadius: 0,
+              borderWidth: 1,
+              borderColor: 'rgb(76, 217, 100, 0.2)',
+              fill: false,
+              data: [70, 70, 70, 70, 70, 70, 70, 70]
+            },
+            {
+              pointRadius: 0,
+              borderWidth: 1,
+              borderColor: 'rgb(76, 217, 100, 0.2)',
+              fill: false,
+              data: [150, 150, 150, 150, 150, 150, 150, 150]
+            },
+            {
+              pointRadius: 0,
+              borderDash: [5, 2],
+              borderWidth: 1,
+              borderColor: 'rgb(255,59,48, 0.2)',
+              fill: false,
+              data: [100, 100, 100, 100, 100, 100, 100, 100]
+            },
+            {
+              pointRadius: 0,
+              borderDash: [5, 2],
+              borderWidth: 1,
+              borderColor: 'rgb(255,59,48, 0.2)',
+              fill: false,
+              data: [300, 300, 300, 300, 300, 300, 300, 300]
+            },
+          ]
         },
         options: {
+          responsive: true,
+          maintainAspectRatio: true,
           title: {
             text: 'Glucose Level'
           },
@@ -35,14 +69,14 @@ angular.module('MainApp.controllers', []).
       });
     }
 
-    $scope.changeBgLevel = function() {
+    $scope.changeBgLevel = function () {
       $scope.object.bgLevel = $scope.bgLevel;
       $scope.object.timestamp = moment().calendar();
     };
 
-    $scope.goTo = function(page) {
+    $scope.goTo = function (page) {
       $scope.currentPage = page;
-    
+
       // clear input field when leaving page
       $scope.bgLevel = "";
     };
@@ -50,4 +84,4 @@ angular.module('MainApp.controllers', []).
     $(document).ready(function () {
       graph();
     });
-});
+  });
