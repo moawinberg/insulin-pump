@@ -96,7 +96,9 @@
         <h2>Enter BG Level</h2>
         <input maxlength="3" ng-change="changeBgLevel()" ng-model="bgLevel" value="" />
         <br />
-        <h5>Latest: {{ object.bgLevel }} </h5>
+        <h5>
+          {{ object.bgLevel }} <span>mol/dL</span>
+        </h5>
         <span>{{ object.timestamp }} </span>
       </div>
 
