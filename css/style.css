@@ -49,7 +49,7 @@ body {
   margin: 0.2em;
 }
 
-.button-item a {
+.button-item div {
   display: flex;
 	justify-content: center;
 	align-items: center;
@@ -66,6 +66,7 @@ body {
 .go-back {
   position: absolute;
   top: 10%;
+  color: #007AFF;
 }
 
 .back-button {
