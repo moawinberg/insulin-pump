@@ -60,11 +60,24 @@ body {
   background-color: #FB8C00;
   border-color: #FB8C00;
   min-width: 100px;
+  font-weight: bold;
+}
+
+.go-back {
+  position: absolute;
+  top: 10%;
+}
+
+.back-button {
+  transform: rotate(180deg);
+  width: 5vw;
+  min-width: 20px;
 }
 
 span {
   color: #c4c4c4;
   font-size: 0.9em;
+  font-weight: 400;
 }
 
 h1,
@@ -93,6 +106,9 @@ h3 {
 
 h4 {
 	font-size: 24px;
+  position: absolute;
+  top: 10%;
+  color: #c4c4c4;
 }
 
 h5 {
