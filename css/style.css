@@ -9,13 +9,13 @@ body {
 .header {
   background-color: #333333;
   width: 100%;
-  height: 50px;
+  height: 5%;
 }
 
 .content {
   display: flex;
   justify-content: space-evenly;
-  height: 100%;
+  height: 95%;
   flex-flow: column;
 }
 
@@ -52,8 +52,10 @@ body {
   display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 150px;
+	width: 40vw;
   padding: 1.5em;
+  background-color: #FB8C00;
+  border-color: #FB8C00;
 }
 
 span {
@@ -106,5 +108,6 @@ p {
 }
 
 img {
-	max-width: 100%;
+  width: 10vw;
+  height: 5vh;
 }
