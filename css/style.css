@@ -69,6 +69,25 @@ body {
   color: #007AFF;
 }
 
+
+input {
+  display: flex;
+  margin: 1.2rem auto;
+  border: none;
+  padding: 0;
+  width: 4.5ch;
+  background: repeating-linear-gradient(90deg, dimgrey 0, dimgrey 1ch, transparent 0, transparent 1.5ch) 0 100%/ 4ch 2px no-repeat;
+  font: 1.2rem 'Ubuntu Mono', monospace;
+  letter-spacing: 0.5ch;
+  color: white;
+  font-size: 2em;
+}
+
+input:focus {
+  outline: none;
+  color: dodgerblue;
+}
+
 .back-button {
   transform: rotate(180deg);
   width: 5vw;

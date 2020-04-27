@@ -5,6 +5,8 @@ angular.module('MainApp', [
 angular.module('MainApp.controllers', []).
   controller('mainController', function ($scope) {
     $scope.currentPage = 'home';
+    $scope.object = { bgLevel: 120 };
+    $scope.bgLevel = "";
 
     function graph() {
       if (!document.getElementById('chart')) {
@@ -33,8 +35,15 @@ angular.module('MainApp.controllers', []).
       });
     }
 
+    $scope.changeBgLevel = function() {
+      $scope.object.bgLevel = $scope.bgLevel;
+    };
+
     $scope.goTo = function(page) {
       $scope.currentPage = page;
+    
+      // clear input field when leaving page
+      $scope.bgLevel = "";
     };
 
     $(document).ready(function () {
