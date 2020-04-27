@@ -80,42 +80,21 @@
     </div>
   </div>
 
-  <div class="content" ng-show="currentPage === 'insulin'" style="padding: 15px;">
+  <div class="content" ng-show="currentPage !== 'home'" style="padding: 15px;">
     <div class="go-back" ng-click="goTo('home')">
       <img class="back-button" src="img/trend.svg">
       Back
     </div>
-    <div class="container">
+    <div class="container" ng-show="currentPage === 'insulin'">
       <h4>Insulin</h4>
     </div>
-  </div>
-
-  <div class="content" ng-show="currentPage === 'calibrate'" style="padding: 15px;">
-    <div class="go-back" ng-click="goTo('home')">
-      <img class="back-button" src="img/trend.svg">
-      Back
-    </div>
-    <div class="container">
+    <div class="container" ng-show="currentPage === 'calibrate'">
       <h4>Calibrate</h4>
     </div>
-  </div>
-
-  <div class="content" ng-show="currentPage === 'settings'" style="padding: 15px;">
-    <div class="go-back" ng-click="goTo('home')">
-      <img class="back-button" src="img/trend.svg">
-      Back
-    </div>
-    <div class="container">
+    <div class="container" ng-show="currentPage === 'settings'">
       <h4>Settings</h4>
     </div>
-  </div>
-
-  <div class="content" ng-show="currentPage === 'order'" style="padding: 15px;">
-    <div class="go-back" ng-click="goTo('home')">
-      <img class="back-button" src="img/trend.svg">
-      Back
-    </div>
-    <div class="container">
+    <div class="container" ng-show="currentPage === 'order'">
       <h4>Order</h4>
     </div>
   </div>
