@@ -52,8 +52,10 @@ body {
   display: flex;
 	justify-content: center;
 	align-items: center;
+  flex-flow: column;
+  font-size: 0.8em;
 	width: 40vw;
-  padding: 1.5em;
+  padding: 1.2em;
   background-color: #FB8C00;
   border-color: #FB8C00;
 }
@@ -109,5 +111,5 @@ p {
 
 img {
   width: 10vw;
-  height: 5vh;
+  height: 4vh;
 }
