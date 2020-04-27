@@ -1,5 +1,8 @@
 
 function graph() {
+  if (!document.getElementById('chart')) {
+    return;
+  }
   const ctx = document.getElementById('chart').getContext('2d');
   new Chart(ctx, {
     type: 'line',

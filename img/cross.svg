@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="253px" height="253px" viewBox="0 0 253 253" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>cross</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cross" transform="translate(8.000000, 8.000000)" stroke="#FF3B30" stroke-width="15">
+            <path d="M118.5,0 C76.1640274,0 37.0439758,22.5859716 15.8759896,59.2499995 C-5.29199654,95.9140273 -5.29199654,141.085973 15.8759896,177.750001 C37.0439758,214.414028 76.1640274,237 118.5,237 C160.835972,237 199.956024,214.414029 221.12401,177.750001 C242.291997,141.085973 242.291997,95.9140272 221.12401,59.2499991 C199.956024,22.5859711 160.835972,0 118.5,0 Z" id="Path"></path>
+            <path d="M64.5,53.5 L176.5,175.5" id="Line-2" stroke-linecap="square"></path>
+            <path d="M181.6875,170.21875 L59.6875,58.21875" id="Line-2" stroke-linecap="square" transform="translate(120.453125, 114.265625) rotate(90.000000) translate(-120.453125, -114.265625) "></path>
+        </g>
+    </g>
+</svg>
