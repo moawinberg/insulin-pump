@@ -27,15 +27,28 @@
   </header>
 
   <div class="content">
-    <div class="container">
-      <div class="info-box">
-        <h1>12.0</h1>
-        <span>mol/dL</span>
+    <div class="container" style="justify-content: space-between;">
+      <div>
+        <span>
+          Automode
+          <img class="header-icon" src="img/check.svg">
+        </span>
+      </div>
+      <div>
+        <span>
+          0.1 Act. Ins
+        </span>
       </div>
     </div>
     <div class="container">
       <div class="chart-container">
         <canvas id="chart"></canvas>
+      </div>
+    </div>
+    <div class="container">
+      <div class="info-box">
+        <h1>12.0</h1>
+        <span>mol/dL</span>
       </div>
     </div>
     <div class="container">
@@ -74,7 +87,7 @@
     var chart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['4:00', '6:00', '8:00', '10:00', '12:00', '14:00', '16:00'],
+        labels: ['4:00', '6:00', '8:00', '10:00', '12:00', '14:00', '16:00', '18:00'],
         datasets: [{
           backgroundColor: '#FB8C00',
           fill: false,
