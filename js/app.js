@@ -19,9 +19,9 @@ angular.module('MainApp.controllers', []).
           labels: ['4:00', '6:00', '8:00', '10:00', '12:00', '14:00', '16:00', '18:00'],
           datasets: [
             {
-              backgroundColor: '#FF9500',
+              backgroundColor: '#5AC8FA',
               fill: false,
-              borderColor: '#FF9500',
+              borderColor: '#5AC8FA',
               data: [70, 100, 150, 100, 100, 120, 210]
             },
             {
