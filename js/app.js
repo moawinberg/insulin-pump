@@ -19,22 +19,37 @@ angular.module('MainApp.controllers', []).
           labels: ['4:00', '6:00', '8:00', '10:00', '12:00', '14:00', '16:00', '18:00'],
           datasets: [
             {
-              backgroundColor: '#5AC8FA',
+              backgroundColor: '#FB8C00',
               fill: false,
-              borderColor: '#5AC8FA',
+              pointRadius: 0,
+              borderColor: '#FB8C00',
+              borderDash: [5, 2],
+              data: [null, null, null, null, null, null, 210, 200]
+            },
+            {
+              backgroundColor: '#FB8C00',
+              fill: false,
+              borderWidth: 6,
+              borderColor: '#FB8C00',
+              data: [null, null, null, null, null, null, 210]
+            },
+            {
+              backgroundColor: '#FB8C00',
+              fill: false,
+              borderColor: '#FB8C00',
               data: [70, 100, 150, 100, 100, 120, 210]
             },
             {
               pointRadius: 0,
               borderWidth: 1,
-              borderColor: 'rgb(76, 217, 100, 0.2)',
+              borderColor: 'rgb(128, 128, 128 0.2)',
               fill: false,
               data: [70, 70, 70, 70, 70, 70, 70, 70]
             },
             {
               pointRadius: 0,
               borderWidth: 1,
-              borderColor: 'rgb(76, 217, 100, 0.2)',
+              borderColor: 'rgb(128, 128, 128 0.2)',
               fill: false,
               data: [150, 150, 150, 150, 150, 150, 150, 150]
             },
@@ -42,7 +57,7 @@ angular.module('MainApp.controllers', []).
               pointRadius: 0,
               borderDash: [5, 2],
               borderWidth: 1,
-              borderColor: 'rgb(255,59,48, 0.2)',
+              borderColor: 'rgb(128, 128, 128, 0.2)',
               fill: false,
               data: [100, 100, 100, 100, 100, 100, 100, 100]
             },
@@ -50,7 +65,7 @@ angular.module('MainApp.controllers', []).
               pointRadius: 0,
               borderDash: [5, 2],
               borderWidth: 1,
-              borderColor: 'rgb(255,59,48, 0.2)',
+              borderColor: 'rgb(128, 128, 128, 0.2)',
               fill: false,
               data: [300, 300, 300, 300, 300, 300, 300, 300]
             },
