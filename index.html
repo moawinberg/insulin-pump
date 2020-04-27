@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Insulin Pump</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body>
+  <header class="section header">
+    <div class="container">
+      <div class="row">
+        <!-- Add icons here -->
+      </div>
+    </div>
+  </header>
+
+  <div class="content">
+    <div class="container">
+      <div class="chart-container">
+        <canvas id="chart"></canvas>
+      </div>
+    </div>
+    <div class="container">
+      <div class="info-box">
+        <h1>12.0</h1>
+        <span>mol/dL</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="button-container">
+        <div class="button-item">
+          <a href="#" class="btn btn-secondary">Insulin</a>
+        </div>
+        <div class="button-item">
+          <a href="#" class="btn btn-secondary">Calibration</a>
+        </div>
+        <div class="button-item">
+          <a href="#" class="btn btn-secondary">Settings</a>
+        </div>
+        <div class="button-item">
+          <a href="#" class="btn btn-secondary">Order</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // graph
+    var ctx = document.getElementById('chart').getContext('2d');
+    var chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['4:00', '6:00', '8:00', '10:00', '12:00', '14:00', '16:00'],
+        datasets: [{
+          backgroundColor: '#f36100',
+          fill: false,
+          borderColor: '#f36100',
+          data: [0, 10, 5, 10, 10, 20, 15]
+        }]
+      },
+      options: {
+        title: {
+          text: 'Glucose Level'
+        },
+        legend: {
+          display: false,
+        }
+      }
+    });
+  </script>
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/masonry.pkgd.min.js"></script>
+  <script src="js/jquery.barfiller.js"></script>
+  <script src="js/jquery.slicknav.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

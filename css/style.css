@@ -1,0 +1,110 @@
+html,
+body {
+	height: 100%;
+	font-family: "Muli", sans-serif;
+	-webkit-font-smoothing: antialiased;
+  background-color: #151515;
+}
+
+.header {
+  background-color: #333333;
+  width: 100%;
+  height: 50px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
+  flex-flow: column;
+}
+
+.info-box {
+  align-items: baseline;
+  display: flex;
+  margin: 30px;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+
+.button-item {
+  margin: 0.2em;
+}
+
+.button-item a {
+  display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 150px;
+  padding: 1.5em;
+}
+
+span {
+  color: #c4c4c4;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	color: white;
+	font-weight: 400;
+	font-family: "Oswald", sans-serif;
+}
+
+h1 {
+	font-size: 70px;
+}
+
+h2 {
+	font-size: 36px;
+}
+
+h3 {
+	font-size: 30px;
+}
+
+h4 {
+	font-size: 24px;
+}
+
+h5 {
+	font-size: 18px;
+}
+
+h6 {
+	font-size: 16px;
+}
+
+p {
+	font-size: 14px;
+	font-family: "Muli", sans-serif;
+	color: #a9a9a9;
+	font-weight: 400;
+	line-height: 24px;
+	margin: 0 0 15px 0;
+}
+
+img {
+	max-width: 100%;
+}
