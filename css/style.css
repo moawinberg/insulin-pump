@@ -43,6 +43,11 @@ body {
   align-items: baseline;
 }
 
+.center {
+  display: flex;
+  align-items: center;
+}
+
 .button-container {
   display: flex;
   flex-wrap: wrap;
@@ -76,6 +81,11 @@ body {
   color: #007AFF;
 }
 
+.custom-range {
+  width: 45vw;
+  min-width: 100px;
+}
+
 .item {
   display: flex;
   align-items: center;
@@ -84,7 +94,7 @@ body {
   color: #c4c4c4;
   padding-left: 15px;
   padding-right: 15px;
-  height: 30px;
+  height: 40px;
   border-top: 1px solid #8E8E93;
   justify-content: space-between;
 }
@@ -206,6 +216,11 @@ p {
 img {
   width: 10vw;
   height: 4vh;
+  min-width: 30px;
+}
+
+.icon {
+  height: 2vh;
   min-width: 30px;
 }
 

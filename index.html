@@ -93,7 +93,7 @@
         <input class="input" maxlength="3" type="number" ng-model="bolusLevel" value="" />
         <div class="button-item" ng-click="changeBolusLevel()">
           <div class="btn btn-secondary">
-            Inject
+            Confirm
           </div>
         </div>
         <br />
@@ -131,15 +131,71 @@
         <h4>Settings</h4>
       </div>
       <div class="settings-container">
+        <span style="padding: 15px;">Insulin Pump</span>
         <div class="item">
-          Insulin pump battery
-          <img class="header-icon" src="img/battery.svg">
+          <div>
+            Battery
+          </div>
+          <div>
+            87%
+            <img class="header-icon" src="img/battery.svg">
+          </div>
         </div>
         <div class="item">
-          Sound
-          <input type="range" min="1" max="100" value="50">
+          <div>
+            Connected
+          </div>
+          <div>
+            Yes
+            <img class="header-icon" src="img/pump.svg">
+          </div>
         </div>
-        <div class="item">Vibration</div>
+      </div>
+      <br />
+      <div class="settings-container">
+        <span style="padding: 15px;">Sensor</span>
+        <div class="item">
+          <div>
+            Life length
+          </div>
+          <div>
+            7 days
+            <img class="header-icon" src="img/calendar.svg">
+          </div>
+        </div>
+        <div class="item">
+          <div>
+            Connected
+          </div>
+          <div>
+            Yes
+            <img class="header-icon" src="img/sensor.svg">
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="settings-container">
+        <span style="padding: 15px;">Notifications</span>
+        <div class="item">
+          <div>
+            Sound
+          </div>
+          <div class="center">
+            <img class="icon" src="img/mute.svg">
+            <input type="range" class="custom-range" id="customRange1">
+            <img class="icon" src="img/speaker.svg">
+          </div>
+        </div>
+        <div class="item">
+          <div>
+            Vibration
+          </div>
+          <div class="center">
+            <img class="icon" src="img/phone.svg">
+            <input type="range" class="custom-range" id="customRange1">
+            <img class="icon" src="img/vibration.svg">
+          </div>
+        </div>
       </div>
     </div>
 
@@ -147,7 +203,6 @@
       <h4>Notifications</h4>
     </div>
   </div>
-
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/moment.min.js"></script>

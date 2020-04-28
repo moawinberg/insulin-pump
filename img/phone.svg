@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="257px" height="385px" viewBox="0 0 257 385" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>phone</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="phone" fill="#8E8E93" fill-rule="nonzero">
+            <path d="M224.008,0.008 L32.008,0.008 C14.376,0.008 0.008,14.376 0.008,32.008 L0.008,352.008 C0.008,369.672 14.376,384.008 32.008,384.008 L224.008,384.008 C241.672,384.008 256.008,369.672 256.008,352.008 L256.008,32.008 C256.008,14.376 241.672,0.008 224.008,0.008 Z M224.008,320.008 L32.008,320.008 L32.008,64.008 L224.008,64.008 L224.008,320.008 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>
