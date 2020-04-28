@@ -4,20 +4,29 @@ body {
 	font-family: "Muli", sans-serif;
 	-webkit-font-smoothing: antialiased;
   background-color: #151515;
+  overflow: scroll;
 }
 
 .header {
-  background-color: #333333;
   width: 100%;
-  height: 6%;
-  display: flex;
+  height: 5%;
+  display: grid;
+  grid-template-columns: 70% 10% 10% 10%;
+  padding-left: 15px;
+  padding-right: 15px;
   align-items: center;
+  border-bottom: 1px solid;
+}
+
+.header-item {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .content {
   display: flex;
   justify-content: space-evenly;
-  height: 94%;
+  height: 95%;
   flex-flow: column;
 }
 
@@ -85,6 +94,7 @@ body {
 .center {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .button-container {
@@ -107,11 +117,19 @@ body {
   flex-flow: column;
   font-size: 0.8em;
 	width: 40vw;
-  padding: 1.2em;
+  padding: 1em;
   background-color: #FB8C00;
   border-color: #FB8C00;
   min-width: 100px;
   font-weight: bold;
+  max-width: 150px;
+}
+
+.sub-header {
+  margin-bottom: 10em;
+  margin-top: 1em;
+  grid-template-columns: 20% 60%;
+  display: grid;
 }
 
 .confirmation-text {
@@ -119,14 +137,14 @@ body {
 }
 
 .go-back {
-  position: absolute;
-  top: 10%;
   color: #007AFF;
 }
 
 .custom-range {
   width: 40vw;
   min-width: 100px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .item {
@@ -198,7 +216,6 @@ body {
 .back-button {
   transform: rotate(180deg);
   width: 5vw;
-  min-width: 20px;
 }
 
 span {
@@ -216,7 +233,7 @@ h6 {
 	margin: 0;
 	color: white;
 	font-weight: 400;
-	font-family: "Oswald", sans-serif;
+	font-family: "Arial", "Helvetica", sans-serif;
   text-align: center;
 }
 
@@ -225,26 +242,24 @@ h1 {
 }
 
 h2 {
-	font-size: 36px;
+	font-size: 2.5em;
 }
 
 h3 {
-	font-size: 30px;
+	font-size: 2em;
 }
 
 h4 {
-	font-size: 24px;
-  position: absolute;
-  top: 12%;
-  color: #c4c4c4;
+	font-size: 1.5em;
 }
 
 h5 {
-	font-size: 18px;
+	font-size: 1em;
+  color: #c4c4c4;
 }
 
 h6 {
-	font-size: 16px;
+	font-size: 0.5em;
 }
 
 p {
@@ -257,18 +272,8 @@ p {
 }
 
 img {
-  width: 10vw;
-  height: 4vh;
-  min-width: 30px;
-}
-
-.icon {
-  height: 2vh;
-  min-width: 30px;
-}
-
-.header-icon {
-  width: 5vw;
-  height: 3vh;
-  min-width: 30px;
+  width: 6vw;
+  height: 6vw;
+  max-height: 20px;
+  max-width: 20px;
 }

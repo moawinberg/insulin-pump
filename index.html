@@ -16,11 +16,17 @@
 </head>
 
 <body ng-app="MainApp" ng-view ng-controller="mainController">
-  <header class="section header" ng-hide="showConfirmation">
-    <div class="container" style="justify-content: space-evenly;">
+  <header class="header">
+    <div ng-hide="showConfirmation">
       <img class="header-icon" src="img/calendar.svg">
+    </div>
+    <div class="header-item" ng-hide="showConfirmation">
       <img class="header-icon" src="img/sensor.svg">
+    </div>
+    <div class="header-item" ng-hide="showConfirmation">
       <img class="header-icon" src="img/pump.svg">
+    </div>
+    <div class="header-item" ng-hide="showConfirmation">
       <img class="header-icon" src="img/battery.svg">
     </div>
   </header>
@@ -47,7 +53,7 @@
     </div>
     <div class="container">
       <div class="info-box">
-        <h1>{{ object.bgLevel }}</h1>
+        <h3>{{ object.bgLevel }}</h3>
         <span>mol/dL</span>
       </div>
     </div>
@@ -71,7 +77,7 @@
             Settings
           </button>
         </div>
-        <div class="button-item" ng-click="goTo('order')">
+        <div class="button-item" ng-click="goTo('notifications')">
           <button class="btn btn-secondary">
             <img src="img/notification.svg">
             Notifications
@@ -81,153 +87,182 @@
     </div>
   </div>
 
-  <div class="content" ng-show="currentPage !== 'home'">
-    <div class="go-back" ng-if="!showConfirmation" ng-click="goTo('home')" style="padding: 15px;">
-      <img class="back-button" src="img/trend.svg">
-      Back
-    </div>
+  <div ng-show="currentPage !== 'home'">
+    <div ng-show="currentPage === 'insulin'">
+      <div class="col-md-12 col-sm-12 sub-header">
+        <div class="go-back" ng-if="!showConfirmation" ng-click="goTo('home')">
+          <img class="back-button" src="img/trend.svg">
+          Back
+        </div>
+        <h5 class="center" ng-hide="showConfirmation">Insulin</h5>
+      </div>
 
-    <div class="container" ng-show="currentPage === 'insulin'">
-      <h4 ng-hide="showConfirmation">Insulin</h4>
-      <div ng-hide="showConfirmation">
-        <h2>Enter Bolus</h2>
-        <input class="input" maxlength="3" type="number" ng-model="bolusLevel" value="" />
-        <div class="button-item">
-          <button class="btn btn-secondary" ng-click="changeBolusLevel()" ng-disabled="!bolusLevel">
-            Confirm
-          </button>
+      <div class="col-md-12 col-sm-12">
+        <div ng-hide="showConfirmation">
+          <h3>Active Bolus</h3>
+          <input class="input" maxlength="3" type="number" ng-model="bolusLevel" value="" />
+          <div class="button-item">
+            <button class="btn btn-secondary" ng-click="changeBolusLevel()" ng-disabled="!bolusLevel">
+              Confirm
+            </button>
+          </div>
+        </div>
+        <div ng-show="showConfirmation">
+          <h3>Bolus set to
+            <br />
+            <br />
+            {{ object.bolusLevel }} U
+          </h3>
         </div>
       </div>
-      <div ng-show="showConfirmation">
-        <h2>Bolus set to
-          <br />
-          <br />
-          {{ object.bolusLevel }} U
-        </h2>
-      </div>
     </div>
 
-    <div class="container" ng-show="currentPage === 'calibrate'">
-      <h4 ng-hide="showConfirmation">Calibrate</h4>
-      <div ng-hide="showConfirmation">
-        <h2>Enter BG Level</h2>
-        <input class="input" maxlength="3" type="number" ng-model="bgLevel" value="" />
-        <div class="button-item">
-          <button class="btn btn-secondary" ng-click="changeBgLevel()" ng-disabled="!bgLevel">
-            Confirm
-          </button>
+    <div ng-show="currentPage === 'calibrate'">
+      <div class="col-md-12 col-sm-12 sub-header">
+        <div class="go-back" ng-if="!showConfirmation" ng-click="goTo('home')">
+          <img class="back-button" src="img/trend.svg">
+          Back
         </div>
+        <h5 class="center" ng-hide="showConfirmation">Calibrate</h5>
       </div>
 
-      <div ng-show="showConfirmation">
-        <h2>BG set to
-          <br />
-          <br />
-          {{ object.bgLevel  }}<span>mol/dL</span>
-        </h2>
+      <div class="col-md-12 col-sm-12">
+        <div ng-hide="showConfirmation">
+          <h3>Blood Glucose</h3>
+          <input class="input" maxlength="3" type="number" ng-model="bgLevel" value="" />
+          <div class="button-item">
+            <button class="btn btn-secondary" ng-click="changeBgLevel()" ng-disabled="!bgLevel">
+              Confirm
+            </button>
+          </div>
+        </div>
+        <div ng-show="showConfirmation">
+          <h3>BG set to
+            <br />
+            <br />
+            {{ object.bgLevel  }} mol/dL
+          </h3>
+        </div>
       </div>
     </div>
 
     <div ng-show="currentPage === 'settings'">
-      <div class="container">
-        <h4>Settings</h4>
-      </div>
-      <div class="settings-container">
-        <span class="sub-headline">Insulin Pump</span>
-        <div class="item">
-          <div>
-            Battery
-          </div>
-          <div>
-            87%
-            <img class="header-icon" src="img/battery.svg">
-          </div>
+      <div class="col-md-12 col-sm-12 sub-header" style="margin-bottom: 3em;">
+        <div class="go-back" ng-click="goTo('home')">
+          <img class="back-button" src="img/trend.svg">
+          Back
         </div>
-        <div class="item">
-          <div>
-            Connected
+        <h5 class="center">Settings</h5>
+      </div>
+
+      <div class="col-md-12 col-sm-12" style="padding: 0">
+        <div class="settings-container">
+          <span class="sub-headline">Insulin Pump</span>
+          <div class="item">
+            <div>
+              Battery
+            </div>
+            <div>
+              87%
+              <img class="header-icon" src="img/battery.svg">
+            </div>
           </div>
-          <div>
-            Yes
-            <img class="header-icon" src="img/pump.svg">
+          <div class="item">
+            <div>
+              Connected
+            </div>
+            <div>
+              Yes
+              <img class="header-icon" src="img/pump.svg">
+            </div>
+          </div>
+          <br />
+          <div class="item">
+            <div>
+              Basal level
+            </div>
+            <div>
+              10 U.
+            </div>
+          </div>
+          <div class="item">
+            <div>
+              Automode
+            </div>
+            <div class="center">
+              <div style="padding: 4px;">
+                {{ automode ? 'On' : 'Off' }}
+              </div>
+              <div class="onoffswitch">
+                <input type="checkbox" ng-click="changeAutomode()" name="onoffswitch" class="onoffswitch-checkbox"
+                  id="myonoffswitch" checked>
+                <label class="onoffswitch-label" for="myonoffswitch"></label>
+              </div>
+            </div>
           </div>
         </div>
         <br />
-        <div class="item">
-          <div>
-            Basal level
-          </div>
-          <div>
-            10 U.
-          </div>
-        </div>
-        <div class="item">
-          <div>
-            Automode
-          </div>
-          <div class="center">
-            <div style="padding: 4px;">
-              {{ automode ? 'On' : 'Off' }}
+        <div class="settings-container">
+          <span class="sub-headline">Sensor</span>
+          <div class="item">
+            <div>
+              Life length
             </div>
-            <div class="onoffswitch">
-              <input type="checkbox" ng-click="changeAutomode()" name="onoffswitch" class="onoffswitch-checkbox"
-                id="myonoffswitch" checked>
-              <label class="onoffswitch-label" for="myonoffswitch"></label>
+            <div>
+              7 days
+              <img class="header-icon" src="img/calendar.svg">
+            </div>
+          </div>
+          <div class="item">
+            <div>
+              Connected
+            </div>
+            <div>
+              Yes
+              <img class="header-icon" src="img/sensor.svg">
             </div>
           </div>
         </div>
-      </div>
-      <br />
-      <div class="settings-container">
-        <span class="sub-headline">Sensor</span>
-        <div class="item">
-          <div>
-            Life length
+        <br />
+        <div class="settings-container">
+          <span class="sub-headline">Notifications</span>
+          <div class="item">
+            <div>
+              Sound
+            </div>
+            <div class="center">
+              <img class="icon" src="img/mute.svg">
+              <input type="range" class="custom-range" id="customRange1">
+              <img class="icon" src="img/speaker.svg">
+            </div>
           </div>
-          <div>
-            7 days
-            <img class="header-icon" src="img/calendar.svg">
-          </div>
-        </div>
-        <div class="item">
-          <div>
-            Connected
-          </div>
-          <div>
-            Yes
-            <img class="header-icon" src="img/sensor.svg">
-          </div>
-        </div>
-      </div>
-      <br />
-      <div class="settings-container">
-        <span class="sub-headline">Notifications</span>
-        <div class="item">
-          <div>
-            Sound
-          </div>
-          <div class="center">
-            <img class="icon" src="img/mute.svg">
-            <input type="range" class="custom-range" id="customRange1">
-            <img class="icon" src="img/speaker.svg">
-          </div>
-        </div>
-        <div class="item">
-          <div>
-            Vibration
-          </div>
-          <div class="center">
-            <img class="icon" src="img/phone.svg">
-            <input type="range" class="custom-range" id="customRange1">
-            <img class="icon" src="img/vibration.svg">
+          <div class="item">
+            <div>
+              Vibration
+            </div>
+            <div class="center">
+              <img class="icon" src="img/phone.svg">
+              <input type="range" class="custom-range" id="customRange1">
+              <img class="icon" src="img/vibration.svg">
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container" ng-show="currentPage === 'order'">
-      <h4>Notifications</h4>
+    <div ng-show="currentPage === 'notifications'">
+      <div class="col-md-12 col-sm-12 sub-header">
+        <div class="go-back" ng-if="!showConfirmation" ng-click="goTo('home')">
+          <img class="back-button" src="img/trend.svg">
+          Back
+        </div>
+        <h5 class="center">Notifications</h5>
+      </div>
+
+      <div class="col-md-12 col-sm-12">
+      </div>
     </div>
+
   </div>
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>

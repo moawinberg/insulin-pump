@@ -96,7 +96,6 @@ angular.module('MainApp.controllers', []).
     };
 
     $scope.changeBgLevel = function() {
-      console.log($scope.bgLevel);
       $scope.object.bgLevel = $scope.bgLevel;
       $scope.object.timestamp = moment().calendar();
       $scope.showConfirmation = true;
@@ -105,7 +104,7 @@ angular.module('MainApp.controllers', []).
         $scope.showConfirmation = false;
         $scope.goTo('home');
         $scope.bgLevel = null;
-      }, 2500);
+      }, 2000);
     };
 
     $scope.changeAutomode = function() {
@@ -122,7 +121,7 @@ angular.module('MainApp.controllers', []).
         $scope.showConfirmation = false;
         $scope.goTo('home');
         $scope.bolusLevel = null;
-      }, 2500);
+      }, 2000);
     };
 
     $(document).ready(function() {
