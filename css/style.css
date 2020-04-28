@@ -26,11 +26,50 @@ body {
   display: flex;
 }
 
+.onoffswitch {
+    position: relative; width: 60px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    margin: 0;
+    display: block; overflow: hidden; cursor: pointer;
+    height: 32px; padding: 0; line-height: 36px;
+    border: 2px solid #8E8E93; border-radius: 36px;
+    background-color: #8E8E93;
+    transition: background-color 0.3s ease-in;
+}
+.onoffswitch-label:before {
+    content: "";
+    display: block; width: 36px; margin: 0px;
+    background: white;
+    position: absolute; top: 0; bottom: 0;
+    right: 22px;
+    border: 2px solid #8E8E93; border-radius: 36px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #49E845;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+   border-color: #49E845;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0px; 
+}
+
 .chart-container {
   display: flex;
   justify-content: center;
   width: 100vw;
   height: 200px;
+}
+
+.sub-headline {
+  padding: 15px;
+  text-transform: uppercase;
 }
 
 .container {
@@ -94,7 +133,7 @@ body {
   color: #c4c4c4;
   padding-left: 15px;
   padding-right: 15px;
-  height: 40px;
+  height: 45px;
   border-top: 1px solid #8E8E93;
   justify-content: space-between;
 }

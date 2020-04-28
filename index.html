@@ -30,7 +30,8 @@
       <div>
         <span>
           Automode
-          <img class="header-icon" src="img/check.svg">
+          <img ng-if="automode" class="header-icon" src="img/check.svg">
+          <img ng-if="!automode" class="header-icon" src="img/cross.svg">
         </span>
       </div>
       <div>
@@ -131,7 +132,7 @@
         <h4>Settings</h4>
       </div>
       <div class="settings-container">
-        <span style="padding: 15px;">Insulin Pump</span>
+        <span class="sub-headline">Insulin Pump</span>
         <div class="item">
           <div>
             Battery
@@ -150,10 +151,24 @@
             <img class="header-icon" src="img/pump.svg">
           </div>
         </div>
+        <div class="item">
+          <div>
+            Automode
+          </div>
+          <div class="center">
+            <div style="padding: 4px;">
+              {{ automode ? 'On' : 'Off' }}
+            </div>
+            <div class="onoffswitch">
+              <input type="checkbox" ng-click="changeAutomode()" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+              <label class="onoffswitch-label" for="myonoffswitch"></label>
+            </div>
+          </div>
+        </div>
       </div>
       <br />
       <div class="settings-container">
-        <span style="padding: 15px;">Sensor</span>
+        <span class="sub-headline">Sensor</span>
         <div class="item">
           <div>
             Life length
@@ -175,7 +190,7 @@
       </div>
       <br />
       <div class="settings-container">
-        <span style="padding: 15px;">Notifications</span>
+        <span class="sub-headline">Notifications</span>
         <div class="item">
           <div>
             Sound

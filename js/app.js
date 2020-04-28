@@ -13,6 +13,7 @@ angular.module('MainApp.controllers', []).
     };
     $scope.bgLevel = "";
     $scope.bolusLevel = "";
+    $scope.automode = true;
 
     function graph() {
       if (!document.getElementById('chart')) {
@@ -102,6 +103,10 @@ angular.module('MainApp.controllers', []).
       $scope.object.bgLevel = $scope.bgLevel;
       $scope.object.timestamp = moment().calendar();
       $scope.goTo('home');
+    };
+
+    $scope.changeAutomode = function() {
+      $scope.automode = $scope.automode ? false : true;
     };
 
     $scope.changeBolusLevel = function() {
