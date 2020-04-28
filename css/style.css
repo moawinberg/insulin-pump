@@ -100,7 +100,7 @@ body {
   margin: 0.2em;
 }
 
-.button-item div {
+.button-item button {
   display: flex;
 	justify-content: center;
 	align-items: center;
@@ -114,6 +114,10 @@ body {
   font-weight: bold;
 }
 
+.confirmation-text {
+  color: #FB8C00;
+}
+
 .go-back {
   position: absolute;
   top: 10%;
@@ -121,7 +125,7 @@ body {
 }
 
 .custom-range {
-  width: 45vw;
+  width: 40vw;
   min-width: 100px;
 }
 

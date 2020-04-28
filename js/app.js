@@ -3,7 +3,7 @@ angular.module('MainApp', [
   'MainApp.controllers'
 ]);
 angular.module('MainApp.controllers', []).
-  controller('mainController', function($scope) {
+  controller('mainController', function ($scope, $timeout) {
     $scope.currentPage = 'home';
     $scope.object = {
       bgLevel: 120,
@@ -11,8 +11,8 @@ angular.module('MainApp.controllers', []).
       timestampBolus: moment().calendar(),
       bolusLevel: 10,
     };
-    $scope.bgLevel = "";
-    $scope.bolusLevel = "";
+    $scope.bgLevel = null;
+    $scope.bolusLevel = null;
     $scope.automode = true;
 
     function graph() {
@@ -93,16 +93,19 @@ angular.module('MainApp.controllers', []).
 
     $scope.goTo = function(page) {
       $scope.currentPage = page;
-
-      // clear input field when leaving page
-      $scope.bgLevel = "";
-      $scope.bolusLevel = "";
     };
 
     $scope.changeBgLevel = function() {
+      console.log($scope.bgLevel);
       $scope.object.bgLevel = $scope.bgLevel;
       $scope.object.timestamp = moment().calendar();
-      $scope.goTo('home');
+      $scope.showConfirmation = true;
+
+      $timeout(function () {
+        $scope.showConfirmation = false;
+        $scope.goTo('home');
+        $scope.bgLevel = null;
+      }, 2500);
     };
 
     $scope.changeAutomode = function() {
@@ -112,7 +115,14 @@ angular.module('MainApp.controllers', []).
     $scope.changeBolusLevel = function() {
       $scope.object.bolusLevel = $scope.bolusLevel;
       $scope.object.timestampBolus = moment().calendar();
-      $scope.goTo('home');
+      
+      $scope.showConfirmation = true;
+
+      $timeout(function () {
+        $scope.showConfirmation = false;
+        $scope.goTo('home');
+        $scope.bolusLevel = null;
+      }, 2500);
     };
 
     $(document).ready(function() {

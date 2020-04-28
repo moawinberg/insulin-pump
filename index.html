@@ -16,7 +16,7 @@
 </head>
 
 <body ng-app="MainApp" ng-view ng-controller="mainController">
-  <header class="section header">
+  <header class="section header" ng-hide="showConfirmation">
     <div class="container" style="justify-content: space-evenly;">
       <img class="header-icon" src="img/calendar.svg">
       <img class="header-icon" src="img/sensor.svg">
@@ -36,7 +36,7 @@
       </div>
       <div>
         <span>
-          0.5 U Act. Insulin
+          {{ object.bolusLevel }} U Act. Insulin
         </span>
       </div>
     </div>
@@ -54,76 +54,77 @@
     <div class="container">
       <div class="button-container">
         <div class="button-item" ng-click="goTo('insulin')">
-          <div class="btn btn-secondary">
+          <button class="btn btn-secondary">
             <img src="img/tube.svg">
             Insulin
-          </div>
+          </button>
         </div>
         <div class="button-item" ng-click="goTo('calibrate')">
-          <div class="btn btn-secondary">
+          <button class="btn btn-secondary">
             <img src="img/drop.svg">
             Calibrate
-          </div>
+          </button>
         </div>
         <div class="button-item" ng-click="goTo('settings')">
-          <div class="btn btn-secondary">
+          <button class="btn btn-secondary">
             <img src="img/settings.svg">
             Settings
-          </div>
+          </button>
         </div>
         <div class="button-item" ng-click="goTo('order')">
-          <div class="btn btn-secondary">
+          <button class="btn btn-secondary">
             <img src="img/notification.svg">
             Notifications
-          </div>
+          </button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="content" ng-show="currentPage !== 'home'">
-    <div class="go-back" ng-click="goTo('home')" style="padding: 15px;">
+    <div class="go-back" ng-if="!showConfirmation" ng-click="goTo('home')" style="padding: 15px;">
       <img class="back-button" src="img/trend.svg">
       Back
     </div>
 
     <div class="container" ng-show="currentPage === 'insulin'">
-      <h4>Insulin</h4>
-      <div>
+      <h4 ng-hide="showConfirmation">Insulin</h4>
+      <div ng-hide="showConfirmation">
         <h2>Enter Bolus</h2>
         <input class="input" maxlength="3" type="number" ng-model="bolusLevel" value="" />
-        <div class="button-item" ng-click="changeBolusLevel()">
-          <div class="btn btn-secondary">
+        <div class="button-item">
+          <button class="btn btn-secondary" ng-click="changeBolusLevel()" ng-disabled="!bolusLevel">
             Confirm
-          </div>
+          </button>
         </div>
-        <br />
-        <br />
-        <div class="center-baseline">
-          <h5 style="margin-right: 4px;">{{ object.bolusLevel }}</h5>
-          <span>U. Active Insulin</span>
-        </div>
-        <span>Updated: {{ object.timestampBolus }} </span>
+      </div>
+      <div ng-show="showConfirmation">
+        <h2>Bolus set to
+          <br />
+          <br />
+          {{ object.bolusLevel }} U
+        </h2>
       </div>
     </div>
 
     <div class="container" ng-show="currentPage === 'calibrate'">
-      <h4>Calibrate</h4>
-      <div>
+      <h4 ng-hide="showConfirmation">Calibrate</h4>
+      <div ng-hide="showConfirmation">
         <h2>Enter BG Level</h2>
         <input class="input" maxlength="3" type="number" ng-model="bgLevel" value="" />
-        <div class="button-item" ng-click="changeBgLevel()">
-          <div class="btn btn-secondary">
+        <div class="button-item">
+          <button class="btn btn-secondary" ng-click="changeBgLevel()" ng-disabled="!bgLevel">
             Confirm
-          </div>
+          </button>
         </div>
-        <br />
-        <br />
-        <div class="center-baseline">
-          <h5 style="margin-right: 4px;">{{ object.bgLevel  }}</h5>
-          <span>mol/dL</span>
-        </div>
-        <span>Updated: {{ object.timestamp }} </span>
+      </div>
+
+      <div ng-show="showConfirmation">
+        <h2>BG set to
+          <br />
+          <br />
+          {{ object.bgLevel  }}<span>mol/dL</span>
+        </h2>
       </div>
     </div>
 
@@ -151,6 +152,15 @@
             <img class="header-icon" src="img/pump.svg">
           </div>
         </div>
+        <br />
+        <div class="item">
+          <div>
+            Basal level
+          </div>
+          <div>
+            10 U.
+          </div>
+        </div>
         <div class="item">
           <div>
             Automode
@@ -160,7 +170,8 @@
               {{ automode ? 'On' : 'Off' }}
             </div>
             <div class="onoffswitch">
-              <input type="checkbox" ng-click="changeAutomode()" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+              <input type="checkbox" ng-click="changeAutomode()" name="onoffswitch" class="onoffswitch-checkbox"
+                id="myonoffswitch" checked>
               <label class="onoffswitch-label" for="myonoffswitch"></label>
             </div>
           </div>
