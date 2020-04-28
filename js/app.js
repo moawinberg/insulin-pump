@@ -3,10 +3,16 @@ angular.module('MainApp', [
   'MainApp.controllers'
 ]);
 angular.module('MainApp.controllers', []).
-  controller('mainController', function ($scope) {
+  controller('mainController', function($scope) {
     $scope.currentPage = 'home';
-    $scope.object = { bgLevel: 120, timestamp: moment().calendar() };
+    $scope.object = {
+      bgLevel: 120,
+      timestamp: moment().calendar(),
+      timestampBolus: moment().calendar(),
+      bolusLevel: 10,
+    };
     $scope.bgLevel = "";
+    $scope.bolusLevel = "";
 
     function graph() {
       if (!document.getElementById('chart')) {
@@ -84,19 +90,27 @@ angular.module('MainApp.controllers', []).
       });
     }
 
-    $scope.changeBgLevel = function () {
-      $scope.object.bgLevel = $scope.bgLevel;
-      $scope.object.timestamp = moment().calendar();
-    };
-
-    $scope.goTo = function (page) {
+    $scope.goTo = function(page) {
       $scope.currentPage = page;
 
       // clear input field when leaving page
       $scope.bgLevel = "";
+      $scope.bolusLevel = "";
     };
 
-    $(document).ready(function () {
+    $scope.changeBgLevel = function() {
+      $scope.object.bgLevel = $scope.bgLevel;
+      $scope.object.timestamp = moment().calendar();
+      $scope.goTo('home');
+    };
+
+    $scope.changeBolusLevel = function() {
+      $scope.object.bolusLevel = $scope.bolusLevel;
+      $scope.object.timestampBolus = moment().calendar();
+      $scope.goTo('home');
+    };
+
+    $(document).ready(function() {
       graph();
     });
   });

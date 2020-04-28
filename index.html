@@ -72,44 +72,79 @@
         </div>
         <div class="button-item" ng-click="goTo('order')">
           <div class="btn btn-secondary">
-            <img src="img/supermarket.svg">
-            Order
+            <img src="img/notification.svg">
+            Notifications
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="content" ng-show="currentPage !== 'home'" style="padding: 15px;">
-    <div class="go-back" ng-click="goTo('home')">
+  <div class="content" ng-show="currentPage !== 'home'">
+    <div class="go-back" ng-click="goTo('home')" style="padding: 15px;">
       <img class="back-button" src="img/trend.svg">
       Back
     </div>
 
     <div class="container" ng-show="currentPage === 'insulin'">
       <h4>Insulin</h4>
+      <div>
+        <h2>Enter Bolus</h2>
+        <input class="input" maxlength="3" type="number" ng-model="bolusLevel" value="" />
+        <div class="button-item" ng-click="changeBolusLevel()">
+          <div class="btn btn-secondary">
+            Inject
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="center-baseline">
+          <h5 style="margin-right: 4px;">{{ object.bolusLevel }}</h5>
+          <span>U. Active Insulin</span>
+        </div>
+        <span>Updated: {{ object.timestampBolus }} </span>
+      </div>
     </div>
 
     <div class="container" ng-show="currentPage === 'calibrate'">
       <h4>Calibrate</h4>
       <div>
         <h2>Enter BG Level</h2>
-        <input maxlength="3" type="number" ng-change="changeBgLevel()" ng-model="bgLevel" value="" />
+        <input class="input" maxlength="3" type="number" ng-model="bgLevel" value="" />
+        <div class="button-item" ng-click="changeBgLevel()">
+          <div class="btn btn-secondary">
+            Confirm
+          </div>
+        </div>
         <br />
-        <h5>
-          {{ object.bgLevel }} <span>mol/dL</span>
-        </h5>
-        <span>{{ object.timestamp }} </span>
+        <br />
+        <div class="center-baseline">
+          <h5 style="margin-right: 4px;">{{ object.bgLevel  }}</h5>
+          <span>mol/dL</span>
+        </div>
+        <span>Updated: {{ object.timestamp }} </span>
       </div>
-
     </div>
 
-    <div class="container" ng-show="currentPage === 'settings'">
-      <h4>Settings</h4>
+    <div ng-show="currentPage === 'settings'">
+      <div class="container">
+        <h4>Settings</h4>
+      </div>
+      <div class="settings-container">
+        <div class="item">
+          Insulin pump battery
+          <img class="header-icon" src="img/battery.svg">
+        </div>
+        <div class="item">
+          Sound
+          <input type="range" min="1" max="100" value="50">
+        </div>
+        <div class="item">Vibration</div>
+      </div>
     </div>
 
     <div class="container" ng-show="currentPage === 'order'">
-      <h4>Order</h4>
+      <h4>Notifications</h4>
     </div>
   </div>
 
