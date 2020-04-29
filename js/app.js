@@ -3,7 +3,7 @@ angular.module('MainApp', [
   'MainApp.controllers'
 ]);
 angular.module('MainApp.controllers', []).
-  controller('mainController', function ($scope, $timeout) {
+  controller('mainController', function($scope) {
     $scope.currentPage = 'home';
     $scope.object = {
       bgLevel: 5.4,
@@ -89,13 +89,13 @@ angular.module('MainApp.controllers', []).
       });
     }
 
-    $scope.bolusAlert = function () {
+    $scope.bolusAlert = function() {
       swal("Active Bolus:", {
         content: "input",
         buttons: "Confirm",
       }).then((value) => {
         if (value) {
-          $scope.$apply(function () {
+          $scope.$apply(() => {
             $scope.object.bolusLevel += parseFloat(value);
           });
           swal(`Active Bolus: ${value}`, {
@@ -107,13 +107,13 @@ angular.module('MainApp.controllers', []).
       });
     }
 
-    $scope.bgAlert = function () {
+    $scope.bgAlert = function() {
       swal("Current BG:", {
         content: "input",
         buttons: "Confirm"
       }).then((value) => {
         if (value) {
-          $scope.$apply(function () {
+          $scope.$apply(() => {
             $scope.object.bolusLevel = parseFloat(value);
           });
           swal(`Current BG: ${value}`, {
@@ -125,40 +125,25 @@ angular.module('MainApp.controllers', []).
       });
     }
 
-    $scope.goTo = function (page) {
+    $scope.goTo = function(page) {
       $scope.currentPage = page;
     };
 
-    $scope.changeBgLevel = function () {
+    $scope.changeBgLevel = function() {
       $scope.object.bgLevel = $scope.bgLevel;
       $scope.object.timestamp = moment().calendar();
-      $scope.showConfirmation = true;
-
-      $timeout(function () {
-        $scope.showConfirmation = false;
-        $scope.goTo('home');
-        $scope.bgLevel = null;
-      }, 2000);
     };
 
-    $scope.changeAutomode = function () {
+    $scope.changeAutomode = function() {
       $scope.automode = $scope.automode ? false : true;
     };
 
-    $scope.changeBolusLevel = function () {
+    $scope.changeBolusLevel = function() {
       $scope.object.bolusLevel = $scope.bolusLevel;
       $scope.object.timestampBolus = moment().calendar();
-
-      $scope.showConfirmation = true;
-
-      $timeout(function () {
-        $scope.showConfirmation = false;
-        $scope.goTo('home');
-        $scope.bolusLevel = null;
-      }, 2000);
     };
 
-    $(document).ready(function () {
+    $(document).ready(function() {
       graph();
     });
   });

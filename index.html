@@ -79,9 +79,9 @@
             <p>Settings</p>
           </button>
         </div>
-        <div class="button-item" ng-click="goTo('notifications')">
+        <div class="button-item" ng-click="goTo('history')">
           <button class="btn btn-secondary">
-            <img src="img/notification.svg">
+            <img src="img/history.svg">
             <p>History</p>
           </button>
         </div>
@@ -128,7 +128,7 @@
         </div>
         <br />
         <div class="settings-container">
-          <span class="sub-headline">Notifications</span>
+          <span class="sub-headline">history</span>
           <div class="item">
             <div>
               Sound
@@ -153,7 +153,7 @@
       </div>
     </div>
 
-    <div ng-show="currentPage === 'notifications'">
+    <div ng-show="currentPage === 'history'">
       <div class="col-md-12 col-sm-12 sub-header">
         <div class="go-back" ng-if="!showConfirmation" ng-click="goTo('home')">
           <img class="back-button" src="img/trend.svg">
