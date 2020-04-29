@@ -11,8 +11,6 @@ angular.module('MainApp.controllers', []).
       timestampBolus: moment().calendar(),
       bolusLevel: 0,
     };
-    $scope.bgLevel = null;
-    $scope.bolusLevel = null;
     $scope.automode = true;
     $scope.activeIndex = 0;
 
@@ -194,7 +192,7 @@ angular.module('MainApp.controllers', []).
       }).then((value) => {
         if (value) {
           $scope.$apply(() => {
-            $scope.object.bolusLevel = parseFloat(value);
+            $scope.object.bgLevel = parseFloat(value);
           });
           swal(`Current BG: ${value}`, {
             icon: "success",
