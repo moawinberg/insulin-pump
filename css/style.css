@@ -156,6 +156,14 @@ body {
   padding: 15px;
 }
 
+.on {
+  color: #4CD964;
+}
+
+.off {
+  color: #FF3B30;
+}
+
 .selected:hover {
   color: #FB8C00;
 }

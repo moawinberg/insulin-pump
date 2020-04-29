@@ -12,6 +12,9 @@ angular.module('MainApp.controllers', []).
       bolusLevel: 0,
     };
     $scope.automode = true;
+    $scope.warningHigh = true;
+    $scope.warningLow = true;
+    $scope.dosage = true;
     $scope.activeIndex = 0;
 
     function graph(labels, datasets) {
@@ -212,8 +215,20 @@ angular.module('MainApp.controllers', []).
       $scope.object.timestamp = moment().calendar();
     };
 
-    $scope.changeAutomode = function() {
+    $scope.changeAutomode = function () {
       $scope.automode = $scope.automode ? false : true;
+    };
+
+    $scope.changeDosageMode = function() {
+      $scope.dosage = $scope.dosage ? false : true;
+    };
+
+    $scope.changeWarningLow = function () {
+      $scope.warningLow = $scope.warningLow ? false : true;
+    };
+
+    $scope.changeWarningHigh = function () {
+      $scope.warningHigh = $scope.warningHigh ? false : true;
     };
 
     $scope.changeBolusLevel = function() {

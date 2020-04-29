@@ -42,7 +42,7 @@
       </span>
     </div>
     <div>
-      <span>
+      <span ng-class="dosage ? 'on' : 'off'">
         {{ object.bolusLevel ? object.bolusLevel : '0' }} U Act. Insulin
       </span>
     </div>
@@ -111,14 +111,6 @@
         <span class="sub-headline">Insulin Pump</span>
         <div class="item">
           <div>
-            Basal level
-          </div>
-          <div>
-            10 U.
-          </div>
-        </div>
-        <div class="item">
-          <div>
             Automode
           </div>
           <div class="center">
@@ -127,15 +119,60 @@
             </div>
             <div class="onoffswitch">
               <input type="checkbox" ng-click="changeAutomode()" name="onoffswitch" class="onoffswitch-checkbox"
-                id="myonoffswitch" checked>
-              <label class="onoffswitch-label" for="myonoffswitch"></label>
+                id="automode" checked>
+              <label class="onoffswitch-label" for="automode"></label>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div>
+            Insulin dosage
+          </div>
+          <div class="center">
+            <div style="padding: 4px;">
+              {{ dosage ? 'On' : 'Off' }}
+            </div>
+            <div class="onoffswitch">
+              <input type="checkbox" ng-click="changeDosageMode()" name="onoffswitch" class="onoffswitch-checkbox"
+                id="dosage" checked>
+              <label class="onoffswitch-label" for="dosage"></label>
             </div>
           </div>
         </div>
       </div>
       <br />
       <div class="settings-container">
-        <span class="sub-headline">history</span>
+        <span class="sub-headline">warning notifications</span>
+        <div class="item">
+          <div>
+            Warning Low
+          </div>
+          <div class="center">
+            <div style="padding: 4px;">
+              {{ warningLow ? 'On' : 'Off' }}
+            </div>
+            <div class="onoffswitch">
+              <input type="checkbox" ng-click="changeWarningLow()" name="onoffswitch" class="onoffswitch-checkbox"
+                id="warningLow" checked>
+              <label class="onoffswitch-label" for="warningLow"></label>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div>
+            Warning High
+          </div>
+          <div class="center">
+            <div style="padding: 4px;">
+              {{ warningHigh ? 'On' : 'Off' }}
+            </div>
+            <div class="onoffswitch">
+              <input type="checkbox" ng-click="changeWarningHigh()" name="onoffswitch" class="onoffswitch-checkbox"
+                id="warningHigh" checked>
+              <label class="onoffswitch-label" for="warningHigh"></label>
+            </div>
+          </div>
+        </div>
         <div class="item">
           <div>
             Sound
