@@ -73,7 +73,7 @@ body {
   display: flex;
   justify-content: center;
   width: 100vw;
-  height: 200px;
+  height: 25vh;
 }
 
 .sub-headline {
@@ -105,19 +105,17 @@ body {
 }
 
 .button-item {
-  display: flex;
-  justify-content: center;
   margin: 0.2em;
 }
 
 .button-item button {
   display: flex;
-	justify-content: center;
+  justify-content: space-around;
 	align-items: center;
   flex-flow: column;
   font-size: 0.8em;
 	width: 40vw;
-  padding: 1em;
+  padding: 1.2em;
   background-color: #FB8C00;
   border-color: #FB8C00;
   min-width: 100px;
@@ -224,6 +222,22 @@ span {
   font-weight: 400;
 }
 
+.swal-overlay--show-modal .swal-modal {
+  width: 60%;
+}
+
+.swal-content__input:focus, .swal-content__textarea:focus {
+  border-color: #FB8C00;
+}
+
+.swal-button {
+  background-color: #FB8C00;
+}
+
+.swal-button:not([disabled]):hover {
+  background-color: #FB8C00;
+}
+
 h1,
 h2,
 h3,
@@ -263,12 +277,11 @@ h6 {
 }
 
 p {
-	font-size: 14px;
+	font-size: 1.2em;
 	font-family: "Muli", sans-serif;
-	color: #a9a9a9;
-	font-weight: 400;
-	line-height: 24px;
-	margin: 0 0 15px 0;
+	font-weight: 500;
+  margin-bottom: 0;
+  margin-top: 5px;
 }
 
 img {

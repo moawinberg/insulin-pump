@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -42,45 +44,45 @@
       </div>
       <div>
         <span>
-          {{ object.bolusLevel }} U Act. Insulin
+          {{ object.bolusLevel ? object.bolusLevel : '0' }} U Act. Insulin
         </span>
       </div>
     </div>
     <div class="container">
       <div class="chart-container">
-        <canvas id="chart"></canvas>
+        <canvas class="chart" id="chart"></canvas>
       </div>
     </div>
     <div class="container">
       <div class="info-box">
         <h3>{{ object.bgLevel }}</h3>
-        <span>mol/dL</span>
+        <span>mmol/L</span>
       </div>
     </div>
     <div class="container">
       <div class="button-container">
-        <div class="button-item" ng-click="goTo('insulin')">
-          <button class="btn btn-secondary">
+        <div class="button-item">
+          <button class="btn btn-secondary" ng-click="bolusAlert()">
             <img src="img/tube.svg">
-            Insulin
+            <p>Insulin</p>
           </button>
         </div>
-        <div class="button-item" ng-click="goTo('calibrate')">
+        <div class="button-item" ng-click="bgAlert()">
           <button class="btn btn-secondary">
             <img src="img/drop.svg">
-            Calibrate
+            <p>Calibrate</p>
           </button>
         </div>
         <div class="button-item" ng-click="goTo('settings')">
           <button class="btn btn-secondary">
             <img src="img/settings.svg">
-            Settings
+            <p>Settings</p>
           </button>
         </div>
         <div class="button-item" ng-click="goTo('notifications')">
           <button class="btn btn-secondary">
             <img src="img/notification.svg">
-            Notifications
+            <p>History</p>
           </button>
         </div>
       </div>
@@ -88,82 +90,6 @@
   </div>
 
   <div ng-show="currentPage !== 'home'">
-    <div ng-show="currentPage === 'insulin'">
-      <div class="col-md-12 col-sm-12 sub-header">
-        <div class="go-back" ng-if="!showConfirmation" ng-click="goTo('home')">
-          <img class="back-button" src="img/trend.svg">
-          Back
-        </div>
-        <h5 class="center" ng-hide="showConfirmation">Insulin</h5>
-      </div>
-
-      <div class="col-md-12 col-sm-12">
-        <div ng-hide="showConfirmation">
-          <h3>Active Bolus</h3>
-          <input class="input" maxlength="3" type="number" ng-model="bolusLevel" value="" />
-          <div class="button-item">
-            <button class="btn btn-secondary" ng-click="changeBolusLevel()" ng-disabled="!bolusLevel">
-              Confirm
-            </button>
-          </div>
-        </div>
-        <div ng-show="showConfirmation">
-          <h3>
-            {{ object.bolusLevel }} U
-            <br />
-            <br />
-            <svg id="successAnimation" class="animated" xmlns="http://www.w3.org/2000/svg" width="70" height="70"
-              viewBox="0 0 70 70">
-              <path id="successAnimationResult" fill="#D8D8D8"
-                d="M35,60 C21.1928813,60 10,48.8071187 10,35 C10,21.1928813 21.1928813,10 35,10 C48.8071187,10 60,21.1928813 60,35 C60,48.8071187 48.8071187,60 35,60 Z M23.6332378,33.2260427 L22.3667622,34.7739573 L34.1433655,44.40936 L47.776114,27.6305926 L46.223886,26.3694074 L33.8566345,41.59064 L23.6332378,33.2260427 Z" />
-              <circle id="successAnimationCircle" cx="35" cy="35" r="24" stroke="#979797" stroke-width="2"
-                stroke-linecap="round" fill="transparent" />
-              <polyline id="successAnimationCheck" stroke="#979797" stroke-width="2" points="23 34 34 43 47 27"
-                fill="transparent" />
-            </svg>
-          </h3>
-        </div>
-      </div>
-    </div>
-
-    <div ng-show="currentPage === 'calibrate'">
-      <div class="col-md-12 col-sm-12 sub-header">
-        <div class="go-back" ng-if="!showConfirmation" ng-click="goTo('home')">
-          <img class="back-button" src="img/trend.svg">
-          Back
-        </div>
-        <h5 class="center" ng-hide="showConfirmation">Calibrate</h5>
-      </div>
-
-      <div class="col-md-12 col-sm-12">
-        <div ng-hide="showConfirmation">
-          <h3>Blood Glucose</h3>
-          <input class="input" maxlength="3" type="number" ng-model="bgLevel" value="" />
-          <div class="button-item">
-            <button class="btn btn-secondary" ng-click="changeBgLevel()" ng-disabled="!bgLevel">
-              Confirm
-            </button>
-          </div>
-        </div>
-        <div ng-show="showConfirmation">
-          <h3>
-            {{ object.bgLevel  }} mol/dL
-            <br />
-            <br />
-            <svg id="successAnimation" class="animated" xmlns="http://www.w3.org/2000/svg" width="70" height="70"
-              viewBox="0 0 70 70">
-              <path id="successAnimationResult" fill="#D8D8D8"
-                d="M35,60 C21.1928813,60 10,48.8071187 10,35 C10,21.1928813 21.1928813,10 35,10 C48.8071187,10 60,21.1928813 60,35 C60,48.8071187 48.8071187,60 35,60 Z M23.6332378,33.2260427 L22.3667622,34.7739573 L34.1433655,44.40936 L47.776114,27.6305926 L46.223886,26.3694074 L33.8566345,41.59064 L23.6332378,33.2260427 Z" />
-              <circle id="successAnimationCircle" cx="35" cy="35" r="24" stroke="#979797" stroke-width="2"
-                stroke-linecap="round" fill="transparent" />
-              <polyline id="successAnimationCheck" stroke="#979797" stroke-width="2" points="23 34 34 43 47 27"
-                fill="transparent" />
-            </svg>
-          </h3>
-        </div>
-      </div>
-    </div>
-
     <div ng-show="currentPage === 'settings'">
       <div class="col-md-12 col-sm-12 sub-header" style="margin-bottom: 3em;">
         <div class="go-back" ng-click="goTo('home')">
@@ -233,7 +159,7 @@
           <img class="back-button" src="img/trend.svg">
           Back
         </div>
-        <h5 class="center">Notifications</h5>
+        <h5 class="center">History</h5>
       </div>
 
       <div class="col-md-12 col-sm-12">

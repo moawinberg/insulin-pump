@@ -6,10 +6,10 @@ angular.module('MainApp.controllers', []).
   controller('mainController', function ($scope, $timeout) {
     $scope.currentPage = 'home';
     $scope.object = {
-      bgLevel: 120,
+      bgLevel: 5.4,
       timestamp: moment().calendar(),
       timestampBolus: moment().calendar(),
-      bolusLevel: 10,
+      bolusLevel: 0,
     };
     $scope.bgLevel = null;
     $scope.bolusLevel = null;
@@ -80,7 +80,6 @@ angular.module('MainApp.controllers', []).
         },
         options: {
           responsive: true,
-          maintainAspectRatio: true,
           title: {
             text: 'Glucose Level'
           },
@@ -91,11 +90,47 @@ angular.module('MainApp.controllers', []).
       });
     }
 
-    $scope.goTo = function(page) {
+    $scope.bolusAlert = function () {
+      swal("Active Bolus:", {
+        content: "input",
+        buttons: "Confirm",
+      }).then((value) => {
+        if (value) {
+          $scope.$apply(function () {
+            $scope.object.bolusLevel += parseFloat(value);
+          });
+          swal(`Active Bolus: ${value}`, {
+            icon: "success",
+            buttons: false,
+            timer: 2000
+          });
+        }
+      });
+    }
+
+    $scope.bgAlert = function () {
+      swal("Current BG:", {
+        content: "input",
+        buttons: "Confirm"
+      }).then((value) => {
+        if (value) {
+          $scope.$apply(function () {
+            $scope.object.bolusLevel = parseFloat(value);
+          });
+          swal(`Current BG: ${value}`, {
+            icon: "success",
+            buttons: false,
+            timer: 2000
+          });
+        }
+      });
+    }
+
+    $scope.goTo = function (page) {
       $scope.currentPage = page;
     };
 
-    $scope.changeBgLevel = function() {
+    $scope.changeBgLevel = function () {
       $scope.object.bgLevel = $scope.bgLevel;
       $scope.object.timestamp = moment().calendar();
       $scope.showConfirmation = true;
@@ -107,14 +142,14 @@ angular.module('MainApp.controllers', []).
       }, 2000);
     };
 
-    $scope.changeAutomode = function() {
+    $scope.changeAutomode = function () {
       $scope.automode = $scope.automode ? false : true;
     };
 
-    $scope.changeBolusLevel = function() {
+    $scope.changeBolusLevel = function () {
       $scope.object.bolusLevel = $scope.bolusLevel;
       $scope.object.timestampBolus = moment().calendar();
-      
+
       $scope.showConfirmation = true;
 
       $timeout(function () {
@@ -124,7 +159,7 @@ angular.module('MainApp.controllers', []).
       }, 2000);
     };
 
-    $(document).ready(function() {
+    $(document).ready(function () {
       graph();
     });
   });
