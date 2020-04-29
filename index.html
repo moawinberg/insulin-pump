@@ -19,16 +19,16 @@
 
 <body ng-app="MainApp" ng-view ng-controller="mainController">
   <header class="header">
-    <div ng-hide="showConfirmation">
+    <div>
       <img class="header-icon" src="img/calendar.svg">
     </div>
-    <div class="header-item" ng-hide="showConfirmation">
+    <div class="header-item">
       <img class="header-icon" src="img/sensor.svg">
     </div>
-    <div class="header-item" ng-hide="showConfirmation">
+    <div class="header-item">
       <img class="header-icon" src="img/pump.svg">
     </div>
-    <div class="header-item" ng-hide="showConfirmation">
+    <div class="header-item">
       <img class="header-icon" src="img/battery.svg">
     </div>
   </header>
@@ -155,7 +155,7 @@
 
     <div ng-show="currentPage === 'history'">
       <div class="col-md-12 col-sm-12 sub-header">
-        <div class="go-back" ng-if="!showConfirmation" ng-click="goTo('home')">
+        <div class="go-back" ng-click="goTo('home')">
           <img class="back-button" src="img/trend.svg">
           Back
         </div>
