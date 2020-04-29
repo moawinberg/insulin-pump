@@ -6,7 +6,7 @@ angular.module('MainApp.controllers', []).
   controller('mainController', function($scope) {
     $scope.currentPage = 'home';
     $scope.object = {
-      bgLevel: 5.4,
+      bgLevel: 6.4,
       timestamp: moment().calendar(),
       timestampBolus: moment().calendar(),
       bolusLevel: 0,
@@ -50,40 +50,58 @@ angular.module('MainApp.controllers', []).
       const result = [];
       let counter = 0;
 
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i <= 4; i++) {
         dataset = {};
         let color = 'rgb(128, 128, 128, 0.2)';
         let radius = 0;
         let dash = [];
         let border = 1;
         let dataItems = [];
+        let order;
 
         if (counter === 0) {
+          order = 4;
           color = '#FB8C00';
           radius = 2;
           border = 2;
-          dataItems = [8, 7, 5.5, 7, 7, 8, 9, 8, 7, 5.5, 7, 7, 8, 9, 8, 7, 5.5, 7, 7, 8, 9, 8, 9, 7];
+          dataItems = [8, 7, 5.5, 7, 7, 8, 9, 8, 7, 5.5, 7, 7, 6.4];
         } else if (counter === 1) {
-          for (let j = 0; j < 24; j++) {
-            dataItems.push(10);
-          }
-        } else if (counter === 2) {
-          for (let j = 0; j < 24; j++) {
+          order = 3;
+          for (let j = 0; j < 14; j++) {
             dataItems.push(15);
           }
-        } else if (counter === 3) {
-          dash = [5, 2];
-          for (let j = 0; j < 24; j++) {
+        } else if (counter === 2) {
+          order = 2;
+          for (let j = 0; j < 14; j++) {
             dataItems.push(4);
-
+          }
+        } else if (counter === 3) {
+          order = 2;
+          color = '#FB8C00';
+          radius = 6;
+          for (let j = 0; j < 14; j++) {
+            if (j === 12) {
+              dataItems.push(6.4);
+            } else {
+              dataItems.push(null);
+            }
           }
         } else if (counter === 4) {
+          order = 1;
+          border = 2;
           dash = [5, 2];
-          for (let j = 0; j < 24; j++) {
-            dataItems.push(5);
+          for (let j = 0; j < 14; j++) {
+            if (j === 12) {
+              dataItems.push(6.4);
+            } else if (j === 13) {
+              dataItems.push(6);
+            } else {
+              dataItems.push(null);
+            }
           }
         }
 
+        dataset.order = order;
         dataset.id = counter;
         dataset.fill = false;
         dataset.backgroundColor = color;
@@ -105,10 +123,10 @@ angular.module('MainApp.controllers', []).
       const currentDate = moment();
 
       if (index === 0) {
-        let date = moment.utc(currentDate).startOf('hour');
-        for (let i = 0; i < 12; i++) {
-          result.push(moment(date).format('HH:mm'));
-          date = moment(date).subtract(2, 'hours');
+        let date = moment.utc(currentDate).subtract(22, 'hours');
+        for (let i = 0; i < 14; i++) {
+          result.push(moment(date).startOf('hour').format('HH:mm'));
+          date = moment(date).add(2, 'hours');
         }
       } else if (index === 1) {
         let date = moment(currentDate).subtract(6, 'days');

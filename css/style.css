@@ -84,7 +84,6 @@ body {
   display: flex;
   justify-content: center;
   width: 100vw;
-  margin-bottom: 1em;
 }
 
 .sub-headline {
@@ -128,6 +127,8 @@ body {
 .chart-button-container button {
   padding: 0 5px 0;
   border: 0;
+  border-top: 1px solid;
+  border-radius: 0;
 }
 
 .btn-outline-secondary {
