@@ -28,17 +28,16 @@ angular.module('MainApp.controllers', []).
             {
               backgroundColor: '#FB8C00',
               fill: false,
-              pointRadius: 0,
-              borderColor: '#FB8C00',
-              borderDash: [5, 2],
-              data: [null, null, null, null, null, null, 210, 200]
-            },
-            {
-              backgroundColor: '#FB8C00',
-              fill: false,
-              borderWidth: 6,
+              borderWidth: 10,
               borderColor: '#FB8C00',
               data: [null, null, null, null, null, null, 210]
+            },
+            {
+              fill: false,
+              pointRadius: 0,
+              borderColor: 'gray',
+              borderDash: [5, 2],
+              data: [null, null, null, null, null, null, 210, 200]
             },
             {
               backgroundColor: '#FB8C00',
