@@ -45,6 +45,7 @@
       <span ng-class="dosage ? 'on' : 'off'">
         {{ object.bolusLevel ? object.bolusLevel : '0' }} U Act. Insulin
       </span>
+      <div ng-if="!dosage" class="info">Dosage paused</div>
     </div>
   </div>
 
