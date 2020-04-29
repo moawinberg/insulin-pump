@@ -17,8 +17,8 @@
   <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 
-<body ng-app="MainApp" ng-view ng-controller="mainController">
-  <header class="header">
+<body ng-app="MainApp" ng-view ng-controller="mainController" class="content">
+  <div class="header grid-item">
     <div>
       <img class="header-icon" src="img/calendar.svg">
     </div>
@@ -31,142 +31,154 @@
     <div class="header-item">
       <img class="header-icon" src="img/battery.svg">
     </div>
-  </header>
+  </div>
 
-  <div class="content" ng-show="currentPage === 'home'">
-    <div class="container" style="justify-content: space-between;">
-      <div>
-        <span>
-          Automode
-          <img ng-if="automode" class="header-icon" src="img/check.svg">
-          <img ng-if="!automode" class="header-icon" src="img/cross.svg">
-        </span>
+  <div class="grid-item space-between padding" ng-show="currentPage === 'home'">
+    <div>
+      <span>
+        Automode
+        <img ng-if="automode" class="header-icon" src="img/check.svg">
+        <img ng-if="!automode" class="header-icon" src="img/cross.svg">
+      </span>
+    </div>
+    <div>
+      <span>
+        {{ object.bolusLevel ? object.bolusLevel : '0' }} U Act. Insulin
+      </span>
+    </div>
+  </div>
+
+  <div class="grid-item" ng-show="currentPage === 'home'">
+    <div class="chart-container">
+      <canvas class="chart" id="chart"></canvas>
+    </div>
+    <div class="chart-button-container">
+      <button class="btn btn-outline-secondary">
+        3 months
+      </button>
+      <button class="btn btn-outline-secondary">
+        1 month
+      </button>
+      <button class="btn btn-outline-secondary">
+        1 week
+      </button>
+      <button class="btn btn-outline-secondary">
+        1 day
+      </button>
+    </div>
+  </div>
+
+  <div class="grid-item center" ng-show="currentPage === 'home'">
+    <div class="info-box">
+      <h3>{{ object.bgLevel }}</h3>
+      <span>mmol/L</span>
+    </div>
+  </div>
+  <div class="grid-item center" ng-show="currentPage === 'home'">
+    <div class="button-container">
+      <div class="button-item">
+        <button class="btn btn-secondary" ng-click="bolusAlert()">
+          <img src="img/tube.svg">
+          <p>Insulin</p>
+        </button>
       </div>
-      <div>
-        <span>
-          {{ object.bolusLevel ? object.bolusLevel : '0' }} U Act. Insulin
-        </span>
+      <div class="button-item" ng-click="bgAlert()">
+        <button class="btn btn-secondary">
+          <img src="img/drop.svg">
+          <p>Calibrate</p>
+        </button>
+      </div>
+      <div class="button-item" ng-click="goTo('settings')">
+        <button class="btn btn-secondary">
+          <img src="img/settings.svg">
+          <p>Settings</p>
+        </button>
+      </div>
+      <div class="button-item" ng-click="goTo('history')">
+        <button class="btn btn-secondary">
+          <img src="img/history.svg">
+          <p>History</p>
+        </button>
       </div>
     </div>
-    <div class="container">
-      <div class="chart-container">
-        <canvas class="chart" id="chart"></canvas>
+  </div>
+
+  <div ng-show="currentPage === 'settings'">
+    <div class="col-md-12 col-sm-12 sub-header" style="margin-bottom: 3em;">
+      <div class="go-back" ng-click="goTo('home')">
+        <img class="back-button" src="img/trend.svg">
+        Back
       </div>
+      <h5 class="center">Settings</h5>
     </div>
-    <div class="container">
-      <div class="info-box">
-        <h3>{{ object.bgLevel }}</h3>
-        <span>mmol/L</span>
+
+    <div class="col-md-12 col-sm-12" style="padding: 0">
+      <div class="settings-container">
+        <span class="sub-headline">Insulin Pump</span>
+        <div class="item">
+          <div>
+            Basal level
+          </div>
+          <div>
+            10 U.
+          </div>
+        </div>
+        <div class="item">
+          <div>
+            Automode
+          </div>
+          <div class="center">
+            <div style="padding: 4px;">
+              {{ automode ? 'On' : 'Off' }}
+            </div>
+            <div class="onoffswitch">
+              <input type="checkbox" ng-click="changeAutomode()" name="onoffswitch" class="onoffswitch-checkbox"
+                id="myonoffswitch" checked>
+              <label class="onoffswitch-label" for="myonoffswitch"></label>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="button-container">
-        <div class="button-item">
-          <button class="btn btn-secondary" ng-click="bolusAlert()">
-            <img src="img/tube.svg">
-            <p>Insulin</p>
-          </button>
+      <br />
+      <div class="settings-container">
+        <span class="sub-headline">history</span>
+        <div class="item">
+          <div>
+            Sound
+          </div>
+          <div class="center">
+            <img class="icon" src="img/mute.svg">
+            <input type="range" class="custom-range" id="customRange1">
+            <img class="icon" src="img/speaker.svg">
+          </div>
         </div>
-        <div class="button-item" ng-click="bgAlert()">
-          <button class="btn btn-secondary">
-            <img src="img/drop.svg">
-            <p>Calibrate</p>
-          </button>
-        </div>
-        <div class="button-item" ng-click="goTo('settings')">
-          <button class="btn btn-secondary">
-            <img src="img/settings.svg">
-            <p>Settings</p>
-          </button>
-        </div>
-        <div class="button-item" ng-click="goTo('history')">
-          <button class="btn btn-secondary">
-            <img src="img/history.svg">
-            <p>History</p>
-          </button>
+        <div class="item">
+          <div>
+            Vibration
+          </div>
+          <div class="center">
+            <img class="icon" src="img/phone.svg">
+            <input type="range" class="custom-range" id="customRange1">
+            <img class="icon" src="img/vibration.svg">
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div ng-show="currentPage !== 'home'">
-    <div ng-show="currentPage === 'settings'">
-      <div class="col-md-12 col-sm-12 sub-header" style="margin-bottom: 3em;">
-        <div class="go-back" ng-click="goTo('home')">
-          <img class="back-button" src="img/trend.svg">
-          Back
-        </div>
-        <h5 class="center">Settings</h5>
+  <div ng-show="currentPage === 'history'">
+    <div class="col-md-12 col-sm-12 sub-header">
+      <div class="go-back" ng-click="goTo('home')">
+        <img class="back-button" src="img/trend.svg">
+        Back
       </div>
-
-      <div class="col-md-12 col-sm-12" style="padding: 0">
-        <div class="settings-container">
-          <span class="sub-headline">Insulin Pump</span>
-          <div class="item">
-            <div>
-              Basal level
-            </div>
-            <div>
-              10 U.
-            </div>
-          </div>
-          <div class="item">
-            <div>
-              Automode
-            </div>
-            <div class="center">
-              <div style="padding: 4px;">
-                {{ automode ? 'On' : 'Off' }}
-              </div>
-              <div class="onoffswitch">
-                <input type="checkbox" ng-click="changeAutomode()" name="onoffswitch" class="onoffswitch-checkbox"
-                  id="myonoffswitch" checked>
-                <label class="onoffswitch-label" for="myonoffswitch"></label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br />
-        <div class="settings-container">
-          <span class="sub-headline">history</span>
-          <div class="item">
-            <div>
-              Sound
-            </div>
-            <div class="center">
-              <img class="icon" src="img/mute.svg">
-              <input type="range" class="custom-range" id="customRange1">
-              <img class="icon" src="img/speaker.svg">
-            </div>
-          </div>
-          <div class="item">
-            <div>
-              Vibration
-            </div>
-            <div class="center">
-              <img class="icon" src="img/phone.svg">
-              <input type="range" class="custom-range" id="customRange1">
-              <img class="icon" src="img/vibration.svg">
-            </div>
-          </div>
-        </div>
-      </div>
+      <h5 class="center">History</h5>
     </div>
 
-    <div ng-show="currentPage === 'history'">
-      <div class="col-md-12 col-sm-12 sub-header">
-        <div class="go-back" ng-click="goTo('home')">
-          <img class="back-button" src="img/trend.svg">
-          Back
-        </div>
-        <h5 class="center">History</h5>
-      </div>
-
-      <div class="col-md-12 col-sm-12">
-      </div>
+    <div class="col-md-12 col-sm-12">
     </div>
-
   </div>
+
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/moment.min.js"></script>

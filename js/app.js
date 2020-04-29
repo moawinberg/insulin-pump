@@ -110,7 +110,7 @@ angular.module('MainApp.controllers', []).
     $scope.bgAlert = function() {
       swal("Current BG:", {
         content: "input",
-        buttons: "Confirm"
+        buttons: "Confirm",
       }).then((value) => {
         if (value) {
           $scope.$apply(() => {
