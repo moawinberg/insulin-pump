@@ -3,7 +3,7 @@ body {
 	height: 100%;
 	font-family: "Muli", sans-serif;
 	-webkit-font-smoothing: antialiased;
-  background-color: #151515;
+  background-color: black;
   overflow: scroll;
 }
 
@@ -139,6 +139,22 @@ body {
   color: #FB8C00;
 }
 
+.info {
+  font-size: 14px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.history-item {
+  color: white;
+  background-color: #151515;
+  border-top: 1px solid rgba(128, 128, 128,0.25);
+  align-items: center;
+  padding: 15px;
+}
+
 .selected:hover {
   color: #FB8C00;
 }
@@ -163,7 +179,7 @@ body {
 }
 
 .sub-header {
-  margin-bottom: 10em;
+  margin-bottom: 5em;
   margin-top: 1em;
   grid-template-columns: 20% 60%;
   display: grid;
@@ -188,7 +204,7 @@ body {
   display: flex;
   align-items: center;
   width: 100%;
-  background-color: rgb(44, 44, 46);
+  background-color: #151515;
   color: #c4c4c4;
   padding-left: 15px;
   padding-right: 15px;
@@ -259,10 +275,6 @@ span {
   color: #c4c4c4;
   font-size: 0.9em;
   font-weight: 400;
-}
-
-.swal-overlay--show-modal .swal-modal {
-  width: 60%;
 }
 
 .swal-content__input:focus, .swal-content__textarea:focus {
