@@ -53,18 +53,12 @@
       <canvas class="chart" id="chart"></canvas>
     </div>
     <div class="chart-button-container">
-      <button class="btn btn-outline-secondary">
-        3 months
-      </button>
-      <button class="btn btn-outline-secondary">
-        1 month
-      </button>
-      <button class="btn btn-outline-secondary">
-        1 week
-      </button>
-      <button class="btn btn-outline-secondary">
-        1 day
-      </button>
+      <div ng-repeat="btnText in ['1 day', '1 week', '1 month', '3 months', '6 months'] track by $index">
+        <button class="btn" ng-class="(activeIndex === $index) ? 'selected' : 'btn-outline-secondary'"
+          ng-click="updateGraph($index)">
+          {{ btnText }}
+        </button>
+      </div>
     </div>
   </div>
 
@@ -182,6 +176,7 @@
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/moment.min.js"></script>
+  <script src="js/underscore.min.js"></script>
   <script src="js/app.js"></script>
 </body>
 

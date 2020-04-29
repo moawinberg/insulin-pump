@@ -14,8 +14,9 @@ angular.module('MainApp.controllers', []).
     $scope.bgLevel = null;
     $scope.bolusLevel = null;
     $scope.automode = true;
+    $scope.activeIndex = 0;
 
-    function graph() {
+    function graph(labels, datasets) {
       if (!document.getElementById('chart')) {
         return;
       }
@@ -23,61 +24,17 @@ angular.module('MainApp.controllers', []).
       $scope.chart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ['4:00', '6:00', '8:00', '10:00', '12:00', '14:00', '16:00', '18:00'],
-          datasets: [
-            {
-              backgroundColor: '#FB8C00',
-              fill: false,
-              borderWidth: 10,
-              borderColor: '#FB8C00',
-              data: [null, null, null, null, null, null, 210]
-            },
-            {
-              fill: false,
-              pointRadius: 0,
-              borderColor: 'gray',
-              borderDash: [5, 2],
-              data: [null, null, null, null, null, null, 210, 200]
-            },
-            {
-              backgroundColor: '#FB8C00',
-              fill: false,
-              borderColor: '#FB8C00',
-              data: [70, 100, 150, 100, 100, 120, 210]
-            },
-            {
-              pointRadius: 0,
-              borderWidth: 1,
-              borderColor: 'rgb(128, 128, 128 0.2)',
-              fill: false,
-              data: [70, 70, 70, 70, 70, 70, 70, 70]
-            },
-            {
-              pointRadius: 0,
-              borderWidth: 1,
-              borderColor: 'rgb(128, 128, 128 0.2)',
-              fill: false,
-              data: [150, 150, 150, 150, 150, 150, 150, 150]
-            },
-            {
-              pointRadius: 0,
-              borderDash: [5, 2],
-              borderWidth: 1,
-              borderColor: 'rgb(128, 128, 128, 0.2)',
-              fill: false,
-              data: [100, 100, 100, 100, 100, 100, 100, 100]
-            },
-            {
-              pointRadius: 0,
-              borderDash: [5, 2],
-              borderWidth: 1,
-              borderColor: 'rgb(128, 128, 128, 0.2)',
-              fill: false,
-              data: [300, 300, 300, 300, 300, 300, 300, 300]
-            },
-          ]
+          labels,
+          datasets
         },
         options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                min: 0,
+              }
+            }]
+          },
           responsive: true,
           title: {
             text: 'Glucose Level'
@@ -88,6 +45,111 @@ angular.module('MainApp.controllers', []).
         }
       });
     }
+
+    function createDataSets() {
+      const result = [];
+      let counter = 0;
+
+      for (let i = 0; i < 4; i++) {
+        dataset = {};
+        let color = 'rgb(128, 128, 128, 0.2)';
+        let radius = 0;
+        let dash = [];
+        let border = 1;
+        let dataItems = [];
+
+        if (counter === 0) {
+          color = '#FB8C00';
+          radius = 2;
+          border = 2;
+          dataItems = [8, 7, 5.5, 7, 7, 8, 9, 8, 7, 5.5, 7, 7, 8, 9, 8, 7, 5.5, 7, 7, 8, 9, 8, 9, 7];
+        } else if (counter === 1) {
+          for (let j = 0; j < 24; j++) {
+            dataItems.push(10);
+          }
+        } else if (counter === 2) {
+          for (let j = 0; j < 24; j++) {
+            dataItems.push(15);
+          }
+        } else if (counter === 3) {
+          dash = [5, 2];
+          for (let j = 0; j < 24; j++) {
+            dataItems.push(4);
+
+          }
+        } else if (counter === 4) {
+          dash = [5, 2];
+          for (let j = 0; j < 24; j++) {
+            dataItems.push(5);
+          }
+        }
+
+        dataset.id = counter;
+        dataset.fill = false;
+        dataset.backgroundColor = color;
+        dataset.borderColor = color;
+        dataset.pointRadius = radius;
+        dataset.borderDash = dash;
+        dataset.borderWidth = border;
+        dataset.data = dataItems;
+
+        result.push(dataset);
+
+        counter += 1;
+      };
+      return result;
+    }
+
+    function createLabels(index) {
+      let result = [];
+      const currentDate = moment();
+
+      if (index === 0) {
+        let date = moment.utc(currentDate).startOf('hour');
+        for (let i = 0; i < 12; i++) {
+          result.push(moment(date).format('HH:mm'));
+          date = moment(date).subtract(2, 'hours');
+        }
+      } else if (index === 1) {
+        let date = moment(currentDate).subtract(6, 'days');
+        for (let i = 0; i < 7; i++) {
+          result.push(moment(date).format('dd'));
+          date = moment(date).add(1, 'days');
+        }
+      } else if (index === 2) {
+        let date = moment(currentDate).subtract(3, 'weeks');
+        for (let i = 0; i < 4; i++) {
+          result.push(`v. ${moment(date).format('W')}`);
+          date = moment(date).add(1, 'week');
+        }
+      } else if (index === 3) {
+        let date = moment(currentDate).subtract(2, 'months');
+        for (let i = 0; i < 3; i++) {
+          result.push(moment(date).format('MMM'));
+          date = moment(date).add(1, 'month');
+        }
+      } else if (index === 4) {
+        let date = moment(currentDate).subtract(5, 'months');
+        for (let i = 0; i < 6; i++) {
+          result.push(moment(date).format('MMM'));
+          date = moment(date).add(1, 'month');
+        }
+      }
+      return result;
+    }
+
+    $scope.updateGraph = function(index) {
+      $scope.activeIndex = index;
+
+      if ($scope.chart) {
+        $scope.chart.destroy;
+      }
+
+      const datasets = createDataSets();
+      const labels = createLabels(index);
+ 
+      graph(labels, datasets);
+    };
 
     $scope.bolusAlert = function() {
       swal("Active Bolus:", {
@@ -105,7 +167,7 @@ angular.module('MainApp.controllers', []).
           });
         }
       });
-    }
+    };
 
     $scope.bgAlert = function() {
       swal("Current BG:", {
@@ -123,7 +185,7 @@ angular.module('MainApp.controllers', []).
           });
         }
       });
-    }
+    };
 
     $scope.goTo = function(page) {
       $scope.currentPage = page;
@@ -144,6 +206,6 @@ angular.module('MainApp.controllers', []).
     };
 
     $(document).ready(function() {
-      graph();
+      $scope.updateGraph(0);
     });
   });

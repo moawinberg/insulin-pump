@@ -122,15 +122,28 @@ body {
 .chart-button-container {
   display: flex;
   justify-content: center;
+  flex-flow: row-reverse;
 }
 
 .chart-button-container button {
-  padding: 1px 7px 2px;
+  padding: 0 5px 0;
+  border: 0;
 }
 
 .btn-outline-secondary {
+  color: dimgray;
+}
+
+.selected {
   color: #FB8C00;
-  border-color: #FB8C00;
+}
+
+.selected:hover {
+  color: #FB8C00;
+}
+
+.selected:active {
+  outline: 0;
 }
 
 .button-item button {
