@@ -170,7 +170,7 @@ angular.module('MainApp.controllers', []).
     };
 
     $scope.bolusAlert = function() {
-      swal("Active Bolus:", {
+      swal("Active Bolus [U]:", {
         content: "input",
         buttons: "Confirm",
       }).then((value) => {
@@ -188,7 +188,7 @@ angular.module('MainApp.controllers', []).
     };
 
     $scope.bgAlert = function() {
-      swal("Current BG:", {
+      swal("Current BG [mmol/L]:", {
         content: "input",
         buttons: "Confirm",
       }).then((value) => {
