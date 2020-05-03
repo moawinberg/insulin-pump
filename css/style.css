@@ -7,6 +7,10 @@ body {
   overflow: scroll;
 }
 
+.swal-modal {
+  width: 80%;
+}
+
 .header {
   width: 100%;
   display: grid;
@@ -28,7 +32,7 @@ body {
 
 .content {
   display: grid;
-  grid-template-rows: 5% 5% 45% 5% 40%;
+  grid-template-rows: 10% 45% 5% 40%;
 }
 
 .grid-item {
@@ -39,6 +43,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin: 0;
+  align-items: center;
 }
 
 .info-box {
