@@ -7,42 +7,20 @@ body {
   overflow: scroll;
 }
 
-.swal-modal {
-  width: 80%;
-}
-
-.header {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 70% 10% 10% 10%;
-  padding-left: 15px;
-  padding-right: 15px;
-  border-bottom: 1px solid;
-}
-
-.header-item {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.padding {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
 .content {
-  display: grid;
-  grid-template-rows: 10% 45% 5% 40%;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: column;
+  padding: 0 15px;
 }
 
 .grid-item {
-  margin: auto;
+  margin: auto 0;
 }
 
 .space-between {
   display: flex;
   justify-content: space-between;
-  margin: 0;
   align-items: center;
 }
 
@@ -88,8 +66,7 @@ body {
 .chart-container {
   display: flex;
   justify-content: center;
-  width: 100vw;
-  padding: 0 5px 0;
+  width: 100%;
   border: 0;
   border-bottom: 1px solid;
   border-radius: 0;
@@ -128,15 +105,14 @@ body {
 }
 
 .chart-button-container {
-  padding: 0 15px 0 15px;
   display: flex;
   justify-content: space-between;
   flex-flow: row-reverse;
 }
 
 .chart-button-container button {
-  padding: 0 5px 0;
   border: 0;
+  padding: 0;
 }
 
 .btn-outline-secondary {
